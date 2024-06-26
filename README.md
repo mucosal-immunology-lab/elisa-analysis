@@ -131,7 +131,7 @@ foreach(i = c('pdf', 'png')) %do% {
            p_arr, width = 18, height = 18, units = 'cm')
 }
 ```
-<div style='text-align: center;'>
+<div align='center'>
     <img src = './assets/elisa_boxplots.png' width = 80%>
 </div>
 
@@ -164,6 +164,6 @@ foreach(i = c('pdf', 'png')) %do% {
 }
 ```
 
-<div style='text-align: center;'>
+<div align='center'>
     <img src = './assets/elisa_boxplots_facetted.png' width = 80%>
 </div>

@@ -114,7 +114,7 @@ elisa_plots <- foreach(i = plates) %do% {
 }
 
 # Combine the plots into a single plot using ggarrange
-p_arr <- ggarrange(plotlist = elisa_plots, nrow = 2, ncol = 2)
+p_arr <- ggarrange(plotlist = elisa_plots, nrow = 1)
 
 # Save the plots as both PDF and PNG files
 foreach(i = c('pdf', 'png')) %do% {
@@ -122,6 +122,9 @@ foreach(i = c('pdf', 'png')) %do% {
            p_arr, width = 18, height = 18, units = 'cm')
 }
 ```
+<div style='text-align: center;'>
+    <img src = './assets/elisa_boxplots.png' width = 80%>
+</div>
 
 #### Combine data and plot
 
@@ -142,7 +145,8 @@ p <- ggplot(fit4PL_combined, aes(x = group, y = pgmL)) +
     theme_pubr(base_size = 8, legend = 'right') +
     labs(x = 'Group',
          y = 'Concentration (pg/mL)') +
-    facet_grid(cols = vars(plate))
+    facet_grid(cols = vars(plate)) +
+    coord_cartesian(ylim = c(NA, 130)) # Adjust to avoid p-value cut-off
 
 # Save the plot in both PDF and PNG format
 foreach(i = c('pdf', 'png')) %do% {
@@ -150,3 +154,7 @@ foreach(i = c('pdf', 'png')) %do% {
            p, width = 18, height = 18, units = 'cm')
 }
 ```
+
+<div style='text-align: center;'>
+    <img src = './assets/elisa_boxplots_facetted.png' width = 80%>
+</div>

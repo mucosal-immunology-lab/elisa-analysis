@@ -113,7 +113,7 @@ The function we define above (`conc`) is based on the inverse 4-PL formula. If w
 
 $x = c \left( \frac{a - d}{y - d} - 1 \right)^{\frac{1}{b}}$
 
-The `theta` output from `dr4pl` arranges the fit parameters as follows. Why they are presented in a different order than the standard 4-PL, nobody knows. :thinking:
+The `theta` output from `dr4pl` arranges the fit parameters as follows. They are listed in the reverse order for some reason.
 
 1. Upper limit (i.e. `D`)
 2. EC50 (i.e. `C`)

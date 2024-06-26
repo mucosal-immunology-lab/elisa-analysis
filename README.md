@@ -5,6 +5,7 @@ Here we discuss the processing of ELISA results using 4 parameter logistic (4-PL
 - [ELISA analysis](#elisa-analysis)
   - [Import data](#import-data)
     - [Run 4-PL regression](#run-4-pl-regression)
+      - [4-PL explanation](#4-pl-explanation)
     - [Plot data](#plot-data)
       - [Plot each plate individually](#plot-each-plate-individually)
       - [Combine data and plot](#combine-data-and-plot)
@@ -85,6 +86,11 @@ fit4PL <- foreach(i = plates) %do% {
     
     # Extract the fitted parameters from the model
     fit_params <- fit$parameters
+
+    # Define a function to return the concentration
+    conc <- function(x, theta) {
+        theta[2] * ((((theta[4] - theta[1])/(x - theta[1])) - 1) ^ (1 / theta[3]))
+    }
     
     # Group by 'group' and 'sample', calculate the mean for numeric columns, and estimate concentrations
     data <- data %>%
@@ -96,6 +102,24 @@ fit4PL <- foreach(i = plates) %do% {
     return(data)
 }; names(fit4PL) <- plates
 ```
+
+#### 4-PL explanation
+
+<div align='center'>
+    <img src = './assets/4PLInfo.jpg' width = 80%>
+</div>
+
+The function we define above (`conc`) is based on the inverse 4-PL formula. If we rearrange the formula above, we get:
+
+$x = c \left( \frac{a - d}{y - d} - 1 \right)^{\frac{1}{b}}$
+
+The `theta` output from `dr4pl` arranges the fit parameters as follows. Why they are presented in a different order than the standard 4-PL, nobody knows. :thinking:
+
+1. Upper limit (i.e. `D`)
+2. EC50 (i.e. `C`)
+3. Slope (i.e. `B`)
+4. Lower limit (i.e. `A`)
+
 
 ### Plot data
 

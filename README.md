@@ -50,6 +50,7 @@ Using the `dr4pl` package, we can loop through the plates and convert the OD540-
 In this case, samples with technical repeats will have their corrected OD450 values averaged (mean) prior to concentration calculation. Alter the final step if you do not want this to happen.
 
 ```r
+# Loop through each plate and calculate concentration using 4-PL regression
 fit4PL <- foreach(i = plates) %do% {
     # Retrieve the corresponding data from the 'elisa_list' using the current file name and correct OD450
     data <- elisa_list[[i]] %>%

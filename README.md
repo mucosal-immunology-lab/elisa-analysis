@@ -2,6 +2,14 @@
 
 Here we discuss the processing of ELISA results using 4 parameter logistic (4-PL) regression.
 
+- [ELISA analysis](#elisa-analysis)
+  - [Import data](#import-data)
+    - [Run 4-PL regression](#run-4-pl-regression)
+    - [Plot data](#plot-data)
+      - [Plot each plate individually](#plot-each-plate-individually)
+      - [Combine data and plot](#combine-data-and-plot)
+
+
 ## Import data
 
 Firstly we need to load the relevant packages, including `dr4pl` which will handle the 4-PL regression step.

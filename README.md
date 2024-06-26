@@ -103,7 +103,7 @@ From here, you could choose to run statistical tests or plot each plate individu
 
 #### Plot each plate individually
 
-In this case, each plate represents a different target protein and data should therefore be plotted individually.
+In this case, each plate represents a different target protein and data. Therefore, we could plot each individually.
 
 ```r
 # Loop through the plates and generate a plot for each
@@ -137,7 +137,7 @@ foreach(i = c('pdf', 'png')) %do% {
 
 #### Combine data and plot
 
-Similarly, we could combine all the data and then facet by plate (or not at all). Combining different plates and plotting together should be treated with caution however &ndash; due to variation between plates, you may consider normalising to percentage or fold-change vs. a control group.
+Similarly, we could combine all the data and then facet by plate (or not at all). Combining different plates that are testing for the same target protein and plotting together should be treated with caution however &ndash; due to variation between plates, you may consider normalising to percentage or fold-change vs. a control group.
 
 ```r
 # Combine the data, making sure to create a new column to reference the plate
